@@ -1,3 +1,4 @@
+// 아티즌 홈 — 배포 파이프라인 연결 확인용 (화면 영향 없음)
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Header } from '../components/Header.jsx'
