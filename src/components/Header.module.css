@@ -1,0 +1,463 @@
+.stickyChrome {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: #fff;
+  transition: transform 0.35s ease;
+}
+
+.chromeHidden {
+  transform: translateY(-100%);
+}
+
+.header {
+  position: relative;
+  background-color: #fff;
+  padding: 35px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.headerInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brandArea {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.menuButton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.menuIcon {
+  position: relative;
+  flex: none;
+  width: 28px;
+  height: 28px;
+}
+.menuBar,
+.menuBar::before,
+.menuBar::after {
+  position: absolute;
+  left: 3px;
+  width: 22px;
+  height: 2px;
+  background: #111;
+  border-radius: 2px;
+  z-index: 1;
+  transition: transform 0.25s ease, top 0.25s ease, opacity 0.2s ease;
+}
+.menuBar {
+  top: 13px;
+}
+.menuBar::before,
+.menuBar::after {
+  content: "";
+  left: 0;
+}
+.menuBar::before {
+  top: -7px;
+}
+.menuBar::after {
+  top: 7px;
+}
+.menuBarOpen {
+  background: transparent;
+}
+.menuBarOpen::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+.menuBarOpen::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+.menuBackdrop {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 90;
+  background: rgba(0, 0, 0, 0.25);
+}
+.menuPanel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 95;
+  background: #fff;
+  border-bottom: 1px solid #f0f0f0;
+  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.08);
+  max-height: calc(100vh - 110px);
+  overflow-y: auto;
+}
+.menuPanelInner {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+  padding-top: 36px;
+  padding-bottom: 48px;
+}
+.menuSideCol {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.menuTabCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-height: 96px;
+  padding: 22px 26px;
+  border: 1px solid #e4e8ef;
+  border-radius: 24px;
+  background: #fff;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.menuTabCard:hover {
+  border-color: #8fa8c4;
+}
+.menuTabActive,
+.menuTabActive:hover {
+  border-color: transparent;
+  background: linear-gradient(150deg, #55689b 0%, #8fa8c4 100%);
+  box-shadow: 0 18px 34px rgba(85, 104, 155, 0.28);
+}
+.menuSideDivider {
+  height: 1px;
+  margin: 4px 0;
+  background: #e4e8ef;
+}
+.menuEyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  color: #8fa8c4;
+}
+.menuCardTitle {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+  color: #17233d;
+}
+.menuTabActive .menuEyebrow {
+  color: rgba(255, 255, 255, 0.75);
+}
+.menuTabActive .menuCardTitle {
+  color: #fff;
+}
+.menuMainCol {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+.menuIntroText {
+  max-width: 620px;
+  margin: 0 0 18px 0;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #555;
+  word-break: keep-all;
+}
+.menuGoLink {
+  font-size: 13px;
+  font-weight: 700;
+  color: #55689b;
+}
+.menuGoLink:hover {
+  text-decoration: underline;
+}
+.menuPanelBlock {
+  padding: 24px 28px 26px;
+  border-radius: 22px;
+  background: #f8f9fb;
+}
+.menuBlockTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 16px 0;
+  font-size: 15px;
+  font-weight: 800;
+  color: #17233d;
+}
+.menuBlockTitle::before {
+  content: "";
+  width: 4px;
+  height: 14px;
+  border-radius: 2px;
+  background: #55689b;
+}
+.menuPill {
+  display: inline-block;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: #eef2f8;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #111;
+}
+.menuSubBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding: 14px 20px;
+  border-radius: 14px;
+  background: #e7edf6;
+  transition: background 0.2s ease;
+}
+.menuSubBar:hover {
+  background: #d9e3f1;
+}
+.menuSubBarName {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+  color: #17233d;
+}
+.menuSubBarGo {
+  flex-shrink: 0;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #55689b;
+}
+.menuSubDivider {
+  height: 1px;
+  margin: 28px 0 24px;
+  background: #e4e8ef;
+}
+.menuGroupGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.menuHRow {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 14px 20px;
+}
+.menuHRowTitle {
+  flex: 0 0 160px;
+}
+.menuHRow .menuInline .menuColItem {
+  margin: 0;
+}
+.menuRiseGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px 44px;
+}
+.menuInline {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 12px;
+}
+.menuColTitle {
+  margin: 0 0 10px 0;
+  font-size: 13px;
+  font-weight: 800;
+  color: #55689b;
+}
+.menuColItem {
+  display: block;
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #444;
+  word-break: keep-all;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+.menuCat {
+  min-width: 0;
+  padding: 18px 20px;
+  border: 1px solid #ebeef3;
+  border-radius: 16px;
+  background: #fff;
+}
+.menuCatLink {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+.menuCatLink:hover {
+  border-color: #8fa8c4;
+  box-shadow: 0 8px 20px rgba(85, 104, 155, 0.1);
+  transform: translateY(-1px);
+}
+.menuCatPreview {
+  margin: 0 0 10px 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.menuCatCta {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #55689b;
+}
+.menuCatGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 14px;
+}
+.menuCat .menuColItem:last-child {
+  margin-bottom: 0;
+}
+.menuRiseGrid .menuInline {
+  flex-direction: column;
+}
+.menuRiseGrid .menuInline .menuColItem + .menuColItem::before {
+  content: none;
+}
+.menuRiseGrid .menuColItem:last-child {
+  margin-bottom: 0;
+}
+.menuHRow .menuInline .menuColItem + .menuColItem::before {
+  content: "·";
+  margin-right: 12px;
+  font-weight: 800;
+  color: #b3bccb;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.navLink {
+  margin-left: 45px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #555;
+  transition: color 0.3s;
+}
+
+.navLink:hover,
+.navLinkActive {
+  color: #000;
+  font-weight: 700;
+}
+
+.navSeparator {
+  width: 1px;
+  height: 14px;
+  background-color: #e0e0e0;
+  margin-left: 22px;
+  margin-right: -23px;
+}
+
+@media (max-width: 1024px) {
+  .menuPanelInner {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .menuSideCol {
+    flex-direction: row;
+  }
+  .menuSideCol > * {
+    flex: 1;
+  }
+  .menuSideCol > .menuSideDivider {
+    flex: none;
+    width: 1px;
+    height: auto;
+    margin: 0 4px;
+  }
+  .menuTabCard {
+    min-height: 0;
+    padding: 18px 20px;
+  }
+  .menuCatGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .menuRiseGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .menuPanelInner {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .menuSideCol {
+    flex-direction: column;
+  }
+  .menuSideCol > .menuSideDivider {
+    width: auto;
+    height: 1px;
+    margin: 4px 0;
+  }
+  .menuPanelBlock {
+    padding: 20px;
+  }
+  .menuRiseGrid {
+    grid-template-columns: 1fr;
+  }
+  .menuHRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .menuHRowTitle {
+    flex: none;
+  }
+  .menuCatGrid {
+    grid-template-columns: 1fr;
+  }
+  .menuInline .menuColItem + .menuColItem::before {
+    margin-right: 12px;
+  }
+  .headerInner {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+  .navLink {
+    margin: 0 10px;
+    font-size: 14px;
+  }
+  .navSeparator {
+    display: none;
+  }
+}

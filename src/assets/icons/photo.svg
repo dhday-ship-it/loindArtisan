@@ -1,0 +1,30 @@
+<svg width="240" height="240" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6b7280"/>
+      <stop offset="1" stop-color="#374151"/>
+    </linearGradient>
+    <linearGradient id="lensOuter" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#60a5fa"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="lensInner" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1e3a8a"/>
+      <stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="28" y="82" width="184" height="122" rx="22" fill="url(#body)"/>
+  <rect x="88" y="56" width="64" height="34" rx="10" fill="#4b5563"/>
+
+  <circle cx="120" cy="146" r="46" fill="url(#lensOuter)"/>
+  <circle cx="120" cy="146" r="32" fill="url(#lensInner)"/>
+  <circle cx="107" cy="133" r="9" fill="#93c5fd" opacity="0.85"/>
+
+  <circle cx="176" cy="104" r="8" fill="#f9fafb"/>
+
+  <g fill="#fbbf24">
+    <path d="M196 40 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4 z"/>
+    <circle cx="46" cy="58" r="5"/>
+  </g>
+</svg>
