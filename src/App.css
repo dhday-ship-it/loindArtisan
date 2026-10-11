@@ -25,3 +25,4 @@ nav a.selected { width: 56px; border-color: #111; background: #111; color: #fff;
 .categories a span { display: block; width: 94px; height: 94px; border-radius: 50%; background: #d9d9d9; }
 
 @media (max-width: 760px) { header { height: 48px; padding: 0 14px; }.brand-button { font-size: 15px; }.hamburger { width: 42px; padding: 0 14px; }.actions a { padding: 6px 11px; }.hero { padding: 20px 20px 38px; gap: 28px; }.hero h1 { font-size: 21px; }.eyebrow { font-size: 17px; }.hero-image { min-height: 240px; }.categories { padding: 12px 20px 50px; gap: 8px; }.categories a { font-size: 7px; }.categories a span { width: 54px; height: 54px; } }
+

@@ -436,6 +436,25 @@ function CategoryPageInner({ slug, initialWorkId }) {
                       {submitting ? '보내는 중...' : uploading ? '파일 올리는 중...' : '이대로 의뢰할게요'}
                     </button>
                   </div>
+
+                  {/* 요약 박스와 분리된 별도 카톡 문의 카드 */}
+                  <div className="order-kakao-card">
+                    <p className="order-kakao-title">작성이 번거로우신가요?</p>
+                    <p className="order-kakao-note">카톡으로 편하게 물어보시면 저희가 도와드릴게요.</p>
+                    <a
+                      className="order-kakao-btn"
+                      href="https://pf.kakao.com/_iIxbxnX"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <span className="order-kakao-icon" aria-hidden="true">
+                        <svg viewBox="0 0 36 36" width="20" height="20" aria-hidden="true">
+                          <path fill="#3C1E1E" d="M18 6C11.37 6 6 10.2 6 15.37c0 3.3 2.2 6.2 5.52 7.86-.24.86-.88 3.17-1 3.65-.15.6.22.6.46.44.19-.13 3-2.03 4.22-2.86.56.08 1.14.12 1.8.12 6.63 0 12-4.2 12-9.37C30 10.2 24.63 6 18 6Z"/>
+                        </svg>
+                      </span>
+                      카톡으로 문의하기
+                    </a>
+                  </div>
                 </aside>
               )}
             </div>
