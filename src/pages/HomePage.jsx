@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Header } from '../components/Header.jsx'
-import { API_BASE } from '../data.js'
+import { fetchArtisanStories } from '../data.js'
 import '../case-list.css'
 
 function Footer() {
@@ -22,14 +22,10 @@ export function HomePage() {
   const [page, setPage] = useState(1)
 
   useEffect(() => {
-    if (!API_BASE) return
     let cancelled = false
-    fetch(`${API_BASE}/api/artisan-stories`)
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
-        if (!cancelled && Array.isArray(data?.stories)) setArtisanStories(data.stories)
-      })
-      .catch(() => {})
+    fetchArtisanStories().then((stories) => {
+      if (!cancelled) setArtisanStories(stories)
+    })
     return () => { cancelled = true }
   }, [])
 

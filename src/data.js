@@ -44,3 +44,31 @@ export const CATEGORY_PROCESS_STEPS = {
 }
 
 export const API_BASE = import.meta.env.VITE_WORKSPACE_API_URL ?? ''
+
+// 아티즌 홈 포트폴리오는 로인드 홈페이지(loind-web)의 Supabase stories 테이블에서
+// "Artisan" 카테고리 글을 직접 읽어온다. loind-web이 공개(anon) 키로 브라우저에서
+// 직접 읽는 테이블이라, 중계 서버 없이 여기서도 같은 방식(REST, 읽기 전용)으로 조회한다.
+const LOIND_WEB_SUPABASE_URL = import.meta.env.VITE_LOIND_WEB_SUPABASE_URL ?? ''
+const LOIND_WEB_SUPABASE_ANON_KEY = import.meta.env.VITE_LOIND_WEB_SUPABASE_ANON_KEY ?? ''
+
+export async function fetchArtisanStories() {
+  if (!LOIND_WEB_SUPABASE_URL || !LOIND_WEB_SUPABASE_ANON_KEY) return []
+  const query = new URLSearchParams({
+    category: 'eq.Artisan',
+    order: 'created_at.desc',
+    select: 'id,title,text,summary,img,images,link,created_at',
+  })
+  try {
+    const res = await fetch(`${LOIND_WEB_SUPABASE_URL}/rest/v1/stories?${query}`, {
+      headers: {
+        apikey: LOIND_WEB_SUPABASE_ANON_KEY,
+        Authorization: `Bearer ${LOIND_WEB_SUPABASE_ANON_KEY}`,
+      },
+    })
+    if (!res.ok) return []
+    const data = await res.json()
+    return Array.isArray(data) ? data : []
+  } catch {
+    return []
+  }
+}
