@@ -52,3 +52,23 @@ footer { background: #17233d; color: #fff; padding-top: 58px; padding-bottom: 52
 /* ── Hero 오른쪽 비주얼 박스를 의뢰 CTA로 전환 (안 A: 미니멀) ── */
 /* Hero 왼쪽 카피 타이포 위계 정리 (라벨 작게 → 제목 크게 → 설명 중간) */
 
+
+/* ── Hero 의뢰하기 CTA 크게 ── */
+.hero-cta { margin-top: 32px; gap: 18px; padding: 20px 32px 20px 36px; font-size: 18px; font-weight: 600; border-radius: 40px; box-shadow: 0 16px 34px rgba(23, 35, 61, .24); transition: transform .18s ease, box-shadow .22s ease; }
+.hero-cta b { font-size: 22px; }
+.hero-cta:hover { transform: translateY(-2px); box-shadow: 0 24px 46px rgba(23, 35, 61, .3); }
+
+/* ── 헤더 로그인/문의 버튼 키우기 ── */
+.site-shell > header .actions { gap: 10px; }
+.site-shell > header .actions a { min-width: auto; height: auto; padding: 9px 20px; font-size: 13px; line-height: 1.2; border-radius: 22px; font-weight: 600; }
+
+/* ── 원형 텍스트가 스크롤에 따라 도는 플로팅 배지 ── */
+.order-fab { position: fixed; right: 28px; bottom: 28px; z-index: 50; display: grid; place-items: center; width: 100px; height: 100px; border-radius: 50%; background: #111; box-shadow: 0 14px 32px rgba(0, 0, 0, .35); transition: transform .3s ease, box-shadow .25s ease, opacity .3s ease; }
+.order-fab > * { grid-area: 1 / 1; }
+.order-fab:hover { transform: translateY(-4px) scale(1.06); box-shadow: 0 22px 44px rgba(0, 0, 0, .45); }
+.order-fab.is-hidden { opacity: 0; transform: translateY(20px) scale(.8); pointer-events: none; }
+.order-fab-ring { width: 100%; height: 100%; will-change: transform; transform: rotate(var(--rot, 0deg)); transform-origin: center center; transform-box: view-box; }
+.order-fab-ring text { fill: #fff; font-size: 10px; font-weight: 700; letter-spacing: 1.8px; }
+.order-fab-icon { font-size: 28px; line-height: 1; color: #fff; transition: transform .25s ease; }
+.order-fab:hover .order-fab-icon { transform: rotate(12deg) scale(1.12); }
+@media (max-width: 760px) { .order-fab { right: 18px; bottom: 18px; width: 84px; height: 84px; }.order-fab-ring text { font-size: 10px; letter-spacing: 1.2px; }.order-fab-icon { font-size: 25px; } }

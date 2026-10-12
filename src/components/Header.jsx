@@ -23,7 +23,7 @@ export function Header({ menuOpen: controlledOpen, onMenuOpenChange, menuTab: co
     </div>
     <div className="actions">
       {customer ? <Link to="/my" onClick={close}>마이페이지</Link> : <Link to="/login" onClick={close}>LOGIN</Link>}
-      <a href="#contact" onClick={close}>문의</a>
+      <a href="https://pf.kakao.com/_iIxbxnX" target="_blank" rel="noreferrer" onClick={close}>문의</a>
     </div>
     {menuOpen && <GroupMenuPanel key={menuTab} initialTab={menuTab} onClose={close} />}
   </header>
