@@ -226,7 +226,8 @@ function CategoryPageInner({ slug, initialWorkId }) {
                         onClick={() => changeCategory(c.slug)}
                       >
                         <img src={c.icon} alt="" />
-                        <span>{c.label}</span>
+                        <span className="order-cat-tab-label">{c.label}</span>
+                        {c.note && <span className="order-cat-tab-note">{c.note}</span>}
                       </button>
                     ))}
                   </div>
@@ -357,15 +358,15 @@ function CategoryPageInner({ slug, initialWorkId }) {
                           onChange={(e) => setRequestText(e.target.value)}
                           placeholder={
                             isVideo
-                              ? '예: 다음 달 수련회 촬영이요. 3/15 ○○교회 본당, 2시간 정도 생각하고 있어요. 참고 영상 링크도 같이 적어주시면 좋아요.'
+                              ? '예: 다음 달 행사 촬영이요. 3/15 ○○홀에서 2시간 정도 생각하고 있어요. 참고 영상 링크도 같이 적어주시면 좋아요.'
                               : isPhoto
-                              ? '예: 임직식 단체사진이요. 3/15 오후 2시 본당, 60명쯤 돼요.'
+                              ? '예: 행사 단체사진이요. 3/15 오후 2시 ○○홀, 60명쯤 돼요.'
                               : isWeb
-                              ? '예: 교회 공식 홈페이지요. 소개·설교·오시는길 메뉴가 필요하고, 참고하고 싶은 사이트가 있으면 링크도 적어주세요.'
+                              ? '예: 공식 홈페이지요. 소개·공지·오시는길 메뉴가 필요하고, 참고하고 싶은 사이트가 있으면 링크도 적어주세요.'
                               : isGoods
-                              ? '예: 수련회 단체 티셔츠 50장이요. 로고는 있고, 5월 초까지 필요해요.'
+                              ? '예: 행사 단체 티셔츠 50장이요. 로고는 있고, 5월 초까지 필요해요.'
                               : targetWork?.title === '명함'
-                              ? '예: 담임목사님 명함이요. 성함·직책·연락처 넣고, 로고 있어요. 깔끔한 느낌이면 좋겠어요.'
+                              ? '예: 대표님 명함이요. 성함·직책·연락처 넣고, 로고 있어요. 깔끔한 느낌이면 좋겠어요.'
                               : '예: 들어갈 문구, 크기, 원하는 날짜나 느낌 등 떠오르는 대로 편하게 적어주세요.'
                           }
                         />
@@ -387,7 +388,7 @@ function CategoryPageInner({ slug, initialWorkId }) {
                     <div className="order-fields order-fields--grid">
                       <label>
                         <span>소속 <em>(선택)</em></span>
-                        <input value={churchName} onChange={(e) => setChurchName(e.target.value)} placeholder="예: ○○교회" />
+                        <input value={churchName} onChange={(e) => setChurchName(e.target.value)} placeholder="예: ○○교회·단체·회사" />
                       </label>
                       <label>
                         <span>성함 *</span>

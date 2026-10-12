@@ -266,10 +266,13 @@
   transition: border-color .18s ease, background .18s ease, box-shadow .18s ease;
 }
 .order-cat-tab img { width: 20px; height: 20px; object-fit: contain; transition: filter .18s ease; }
-.order-cat-tab span { font-size: 13.5px; font-weight: 600; color: #4a4a4f; letter-spacing: -.02em; }
+.order-cat-tab-text { display: inline-flex; flex-direction: column; align-items: flex-start; }
+.order-cat-tab-label { display: block; font-size: 13.5px; font-weight: 600; color: #4a4a4f; letter-spacing: -.02em; line-height: 1.25; }
+.order-cat-tab-note { display: block; margin-top: 1px; font-size: 10.5px; font-weight: 700; color: #e8956d; letter-spacing: -.01em; }
 .order-cat-tab:hover { border-color: #c7cbd3; box-shadow: 0 4px 12px rgba(29,29,31,.05); }
 .order-cat-tab.active { border-color: #1d1d1f; background: #1d1d1f; }
-.order-cat-tab.active span { color: #fff; }
+.order-cat-tab.active .order-cat-tab-label { color: #fff; }
+.order-cat-tab.active .order-cat-tab-note { color: #f6b89a; }
 .order-cat-tab.active img { filter: brightness(0) invert(1); }
 
 .order-chip {
