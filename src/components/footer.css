@@ -1,0 +1,107 @@
+/* 로인드 홈페이지(loind-web) Footer.module.css 와 같은 값.
+   아티즌 전역 스타일의 `footer { ... }` 규칙을 덮어쓰기 위해 클래스 선택자로 지정 */
+footer.lw-footer {
+  display: block;
+  min-height: 0;
+  padding: 100px 0;
+  background-color: #0b0b0b;
+  color: #fff;
+  font-family: "Pretendard", -apple-system, sans-serif;
+}
+.lw-footer-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.lw-footer-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 140px;
+}
+.lw-footer-logo {
+  margin: 0 0 15px;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: normal;
+  color: #fff;
+}
+.lw-footer-company {
+  margin: 0 0 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.lw-footer-company p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #777;
+}
+.lw-footer-company span {
+  margin: 0 8px;
+  color: #3a3a3a;
+}
+.lw-footer-company a {
+  color: #999;
+  transition: color 0.2s;
+}
+.lw-footer-company a:hover {
+  color: #fff;
+}
+.lw-footer-company .lw-footer-legal {
+  margin-top: 8px;
+}
+.lw-footer-company .lw-footer-legal a {
+  color: #fff;
+  font-weight: 700;
+}
+.lw-footer-copy {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+.lw-footer-right {
+  display: flex;
+}
+.lw-footer-links {
+  margin-left: 100px; /* loind-web .footerLinks 와 동일 */
+}
+.lw-footer-links {
+  display: flex;
+  flex-direction: column;
+}
+.lw-footer-links h4 {
+  margin: 0 0 22px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #aaa;
+}
+.lw-footer-links a {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 14px;
+  color: #666;
+  transition: color 0.2s;
+}
+.lw-footer-links a:hover {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  footer.lw-footer {
+    padding: 60px 0;
+  }
+  .lw-footer-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .lw-footer-right {
+    justify-content: space-between;
+  }
+  .lw-footer-links {
+    margin-left: 0;
+  }
+}

@@ -2,12 +2,9 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Header } from '../components/Header.jsx'
+import { Footer } from '../components/Footer.jsx'
 import { fetchArtisanStories } from '../data.js'
 import '../case-list.css'
-
-function Footer() {
-  return <footer><div className="footer-brand"><strong>LOIND</strong><small>© 2026 LOIND. All rights reserved.</small></div><div className="footer-links"><div><p>Company</p><a href="https://loind.com/about">About</a><a href="https://loind.com/service">Service</a><a href="https://loind.com/story">Story</a><a href="https://loind.com/contact">Contact</a><a href="https://www.loindworks.com">Works</a></div><div><p>Resources</p><a href="https://loind.com/story">Story</a><a href="https://www.instagram.com/loind_official/">Instagram</a><a href="https://youtube.com/@loind-youtube">Youtube</a></div></div></footer>
-}
 
 // 포트폴리오 섹션은 로인드 홈페이지(loind-web) 스토리 중 "아티즌" 카테고리로 올라온
 // 실제 작업 사례만 보여준다 — 의뢰 타입 카탈로그(촬영/명함 등)는 여기 섞지 않는다.

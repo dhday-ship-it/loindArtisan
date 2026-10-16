@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Header } from '../components/Header.jsx'
+import { Footer } from '../components/Footer.jsx'
 import { useAuth } from '../auth/AuthContext.jsx'
 import { categories, categoryBySlug, CATEGORY_PROCESS_STEPS, DESIGN_GROUPS, findDesignGroup, API_BASE } from '../data.js'
+import { PRIVACY_URL } from '../company.js'
+import '../order-consent.css'
 import '../work.css'
 import '../category.css'
 
@@ -43,6 +46,9 @@ function CategoryPageInner({ slug, initialWorkId }) {
 
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState(null)
+  // 개인정보 수집·이용 동의 (필수)
+  const [privacyAgreed, setPrivacyAgreed] = useState(false)
+  const [privacyOpen, setPrivacyOpen] = useState(false)
   const [completedOrder, setCompletedOrder] = useState(null)
 
   const { token, customer } = useAuth()
@@ -150,6 +156,10 @@ function CategoryPageInner({ slug, initialWorkId }) {
     const wantsPhysical = targetWork.supportsPrint && deliveryMode === 'PHYSICAL'
     if (wantsPhysical && !shippingAddress.trim()) {
       setError('실물로 받으시려면 보내드릴 주소가 필요해요.')
+      return
+    }
+    if (!privacyAgreed) {
+      setError('개인정보 수집·이용에 동의해주셔야 의뢰를 보내드릴 수 있어요.')
       return
     }
     setError(null)
@@ -403,6 +413,33 @@ function CategoryPageInner({ slug, initialWorkId }) {
                         <input value={customerEmail} onChange={(e) => setCustomerEmail(e.target.value)} placeholder="연락받으실 이메일" type="email" />
                       </label>
                     </div>
+
+                    {/* 개인정보 수집·이용 동의 (필수) */}
+                    <div className="order-consent">
+                      <label className="order-consent-check">
+                        <input type="checkbox" checked={privacyAgreed} onChange={(e) => setPrivacyAgreed(e.target.checked)} />
+                        개인정보 수집·이용에 동의합니다 <em>(필수)</em>
+                        <button type="button" className="order-consent-toggle" onClick={() => setPrivacyOpen((v) => !v)}>
+                          {privacyOpen ? '접기' : '자세히 보기'}
+                        </button>
+                      </label>
+                      {privacyOpen && (
+                        <div className="order-consent-detail">
+                          <dl>
+                            <dt>수집 항목</dt>
+                            <dd>성함, 연락처, 의뢰 내용 (필수) / 이메일, 소속, 참고 파일 (선택) / 실물 납품 시 받는 분 주소·성함·연락처</dd>
+                            <dt>이용 목적</dt>
+                            <dd>의뢰 접수·상담, 견적 안내, 작업 진행 안내 및 결과물 전달·배송</dd>
+                            <dt>보유 기간</dt>
+                            <dd>의뢰 완료(또는 취소) 후 1년. 관련 법령에 따라 보관이 필요한 경우 그 기간까지</dd>
+                          </dl>
+                          <p>
+                            동의하지 않으실 수 있으나, 동의하지 않으면 의뢰 접수가 어려워요. 자세한 내용은{' '}
+                            <a href={PRIVACY_URL} target="_blank" rel="noopener noreferrer">개인정보처리방침</a>을 확인해주세요.
+                          </p>
+                        </div>
+                      )}
+                    </div>
                   </section>
                 </>}
               </form>
@@ -463,5 +500,6 @@ function CategoryPageInner({ slug, initialWorkId }) {
         </section>
       )}
     </main>
+    <Footer />
   </div>
 }
