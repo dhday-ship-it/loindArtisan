@@ -6,12 +6,12 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 
 const SITE = 'https://artisan.loind.com'
 const PAGES = [
-  { slug: 'video', title: '영상 프로덕션', desc: '홍보영상·스케치영상·강의영상·인터뷰영상 — 기획부터 촬영·편집까지 아티즌이 함께 만듭니다.' },
-  { slug: 'design', title: '디자인', desc: '디자인부터 인쇄·제작·배송까지, 아티즌이 한 번에 진행합니다.' },
+  { slug: 'video', title: '영상 프로덕션', desc: '홍보영상·스케치영상·강의영상·인터뷰영상 — 기획부터 촬영·편집까지 로인드 아티즌이 함께 만듭니다.' },
+  { slug: 'design', title: '디자인', desc: '디자인부터 인쇄·제작·배송까지, 로인드 아티즌이 한 번에 진행합니다.' },
   { slug: 'web', title: '홈페이지 · 웹', desc: '브랜드에 맞춘 홈페이지와 웹 서비스를 기획하고 개발합니다.' },
-  { slug: 'photo', title: '사진 촬영', desc: '행사와 현장의 순간을 아티즌이 사진으로 담습니다.' },
+  { slug: 'photo', title: '사진 촬영', desc: '행사와 현장의 순간을 로인드 아티즌이 사진으로 담습니다.' },
   { slug: 'goods', title: '굿즈 · 기념품 제작', desc: '단체 굿즈와 기념품을 디자인부터 제작까지 함께합니다.' },
-  { slug: 'custom', title: '커스텀작업 신청', desc: '원하는 작업을 자유롭게 의뢰하세요. 영상·디자인·웹·사진·굿즈까지 아티즌이 함께 만듭니다.' },
+  { slug: 'custom', title: '커스텀작업 신청', desc: '원하는 작업을 자유롭게 의뢰하세요. 영상·디자인·웹·사진·굿즈까지 로인드 아티즌이 함께 만듭니다.' },
 ]
 
 const escape = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
@@ -24,7 +24,7 @@ const base = readFileSync('dist/index.html', 'utf8')
 mkdirSync('dist/category', { recursive: true })
 for (const p of PAGES) {
   const url = `${SITE}/category/${p.slug}`
-  const title = escape(`${p.title} · 아티즌 ARTISAN | LOIND`)
+  const title = escape(`${p.title} · 로인드 아티즌 | LOIND ARTISAN`)
   const desc = escape(p.desc)
   let html = base
   html = replaceOnce(html, /<title>[\s\S]*?<\/title>/, `<title>${title}</title>`, 'title')
@@ -34,7 +34,7 @@ for (const p of PAGES) {
   html = replaceOnce(html, /<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/, `<meta property="og:url" content="${url}" />`, 'og:url')
   html = replaceOnce(html, /<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/, `<link rel="canonical" href="${url}" />`, 'canonical')
   // 로봇용 요약: 제목·설명 + 다른 카테고리 링크는 index.html 의 nav 를 그대로 둔다
-  html = replaceOnce(html, /<h1>[^<]*<\/h1>\s*<p>[^<]*<\/p>/, `<h1>${escape(p.title)} — 아티즌 ARTISAN</h1>\n      <p>${desc}</p>`, 'noscript 요약')
+  html = replaceOnce(html, /<h1>[^<]*<\/h1>\s*<p>[^<]*<\/p>/, `<h1>${escape(p.title)} — 로인드 아티즌 LOIND ARTISAN</h1>\n      <p>${desc}</p>`, 'noscript 요약')
   writeFileSync(`dist/category/${p.slug}.html`, html)
   console.log(`prerender: dist/category/${p.slug}.html`)
 }
