@@ -1,5 +1,5 @@
 // 빌드 후 실행: 카테고리 페이지마다 dist/category/<slug>.html 을 만들어 페이지별 제목·설명·canonical 을 넣는다.
-// (Vercel cleanUrls 로 /category/video 요청에 category/video.html 이 나감. 화면은 그대로 React 가 그린다)
+// (vercel.json 의 rewrite 로 /category/video 요청에 category/video.html 이 나감. 화면은 그대로 React 가 그린다)
 // 모든 주소가 index.html 로 가면 검색 로봇에게 카테고리 페이지가 전부 같은 제목으로 보이기 때문.
 // ※ 카테고리를 추가하면 아래 PAGES 와 public/sitemap.xml 에 함께 추가해주세요.
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
