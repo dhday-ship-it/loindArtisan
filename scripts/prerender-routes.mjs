@@ -33,6 +33,8 @@ for (const p of PAGES) {
   html = replaceOnce(html, /<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/, `<meta property="og:description" content="${desc}" />`, 'og:description')
   html = replaceOnce(html, /<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/, `<meta property="og:url" content="${url}" />`, 'og:url')
   html = replaceOnce(html, /<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/, `<link rel="canonical" href="${url}" />`, 'canonical')
+  // 로봇용 요약: 제목·설명 + 다른 카테고리 링크는 index.html 의 nav 를 그대로 둔다
+  html = replaceOnce(html, /<h1>[^<]*<\/h1>\s*<p>[^<]*<\/p>/, `<h1>${escape(p.title)} — 아티즌 ARTISAN</h1>\n      <p>${desc}</p>`, 'noscript 요약')
   writeFileSync(`dist/category/${p.slug}.html`, html)
   console.log(`prerender: dist/category/${p.slug}.html`)
 }
